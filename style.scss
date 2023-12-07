@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr 60px;
+    height: 100svh;
+}
+.footer {
+    grid-row: -1 / -2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > .addBook {
+        border: none;
+        padding: 10px;
+        background-color: dodgerblue;
+        box-shadow: 2px 2px 4px 1px gray;
+        border-radius: 6px;
+
+        &:hover {
+            opacity: 80%;
+        }
+        &:active {
+            opacity: 100%;
+        }
+    }
+
+}
+.addBookDialog > .addBookDialogForm{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 8px;
+
+    & .CloseAddBookDialog {
+        position: absolute;
+        top:-5%;
+        right: -5%;
+    }
+}
