@@ -46,6 +46,12 @@ function addBookToLibrary() {
 
     const newBook = new book (author, title, pages, read);
     myLibrary.push(newBook)
+    
+    document.getElementById('author').value = '';
+    document.getElementById('title').value = '';
+    document.getElementById('pages').value = '';
+    document.getElementById('read').checked = false;
+    
     showLibrary();
 
 }
