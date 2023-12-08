@@ -16,16 +16,16 @@ addBookBtn.addEventListener('click', (e)=>{
 const myLibrary = [];
 const libraryDiv = document.querySelector('.library');
 
-const bookOne = new book ('test', 'testtoo', 256, true);
-const bookTwo = new book ('bla', 'bla', 64, false)
-myLibrary.push(bookOne, bookTwo);
+const bookOne = new book ('The Art Of War', 'Sun Tzu', 273, true, 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630683326i/10534.jpg');
+myLibrary.push(bookOne);
 showLibrary();
 
-function book (author, title, pages, read) {
+function book (author, title, pages, read, photo_url) {
     this.author = author;
     this.title = title;
     this.pages = pages;
     this.read = read;
+    this.photo_url = photo_url;
 }
 
 book.prototype.toggleRead = function() {
@@ -42,14 +42,16 @@ function addBookToLibrary() {
     const author = document.getElementById('author').value;
     const title = document.getElementById('title').value;
     const pages = document.getElementById('pages').value;
+    const imgUrl = document.getElementById('urlInput').value;
     const read = document.getElementById('read').checked;
 
-    const newBook = new book (author, title, pages, read);
+    const newBook = new book (author, title, pages, read, imgUrl);
     myLibrary.push(newBook)
     
     document.getElementById('author').value = '';
     document.getElementById('title').value = '';
     document.getElementById('pages').value = '';
+    document.getElementById('urlInput').value = ''
     document.getElementById('read').checked = false;
     
     showLibrary();
@@ -66,7 +68,7 @@ function showLibrary() {
     for (i=0; i < myLibrary.length; i++) {
         const libraryDivBook = document.createElement('div');
         libraryDivBook.innerHTML = `
-        <div class='bookInLibrary'>
+        <div class='bookInLibrary' style='background: no-repeat  center url(${myLibrary[i].photo_url});background-size: cover;'>
         <div class='bookTitle'>${myLibrary[i].title}</div>
         <div class='bookAuthor'>${myLibrary[i].author}</div>
         <div class='bookPages'>${myLibrary[i].pages}</div>
