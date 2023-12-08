@@ -21,10 +21,10 @@ const bookTwo = new book ('bla', 'bla', 64, false)
 myLibrary.push(bookOne, bookTwo);
 showLibrary();
 
-function book (author, title, page, read) {
+function book (author, title, pages, read) {
     this.author = author;
     this.title = title;
-    this.page = page;
+    this.pages = pages;
     this.read = read;
 }
 
