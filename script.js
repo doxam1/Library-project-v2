@@ -7,10 +7,64 @@ document.querySelector('.CloseAddBookDialog').addEventListener('click', function
     addBookDialog.close();
 })
 
+
+function addBookFormValidation() {
+    const addBookForm = document.querySelector('.addBookDialogForm');
+    if (addBookForm.checkValidity()) {
+        return true;
+    } else {
+        const author = document.getElementById('author');
+        if (author.validity.valueMissing) {
+            author.setCustomValidity('please fill in the author name');
+        } else {
+            author.setCustomValidity('');
+        }
+    }
+        const title = document.getElementById('title');
+        if (title.validity.valueMissing) {
+            title.setCustomValidity('please enter the title of the book');
+        } else {
+            title.setCustomValidity('');
+        }
+        const pages = document.querySelector('#pages');
+        if (pages.validity.valueMissing) {
+            pages.setCustomValidity('how many page?');
+        } else {
+            pages.setCustomValidity('');
+        }
+        addBookForm.reportValidity();
+
+        author.oninput=()=>{
+            if (author.validity.valueMissing) {
+            author.setCustomValidity('please fill in the author name');
+        } else {
+            author.setCustomValidity('');
+        }}
+
+        title.oninput =()=> {
+        if (title.validity.valueMissing) {
+            title.setCustomValidity('please enter the title of the book');
+        } else {
+            title.setCustomValidity('');
+        }}
+        pages.oninput=()=> {
+        if (pages.validity.valueMissing) {
+            pages.setCustomValidity('how many page?');
+        } else {
+            pages.setCustomValidity('');
+        }}
+        addBookForm.reportValidity();
+
+
+    
+}
+
 addBookBtn.addEventListener('click', (e)=>{
     e.preventDefault();
-    addBookToLibrary();
-    addBookDialog.close();
+    if (addBookFormValidation()) {
+        addBookToLibrary();
+        addBookDialog.close();
+    }  
 })
 
 const myLibrary = [];

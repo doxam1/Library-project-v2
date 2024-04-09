@@ -44,7 +44,14 @@ body {
         top:-5%;
         right: -5%;
     }
-}
+
+    &>*:invalid:focus {       
+        outline: 1px solid red;
+    }
+    &>*:valid {
+        outline:1px solid green;
+    }
+    }
 
 .library {
     box-shadow: 2px 2px 6px gray;
